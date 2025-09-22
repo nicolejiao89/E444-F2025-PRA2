@@ -5,17 +5,13 @@ from flask_moment import Moment
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired, Email
+from wtforms.fields import EmailField  # WTForms 3.x
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'hard to guess string'
 
 Bootstrap(app)
 Moment(app)
-
-try:
-    from wtforms.fields import EmailField  # WTForms 3.x
-except ImportError:
-    from wtforms.fields.html5 import EmailField  # WTForms 2.x
 
 # chapter 3 activity
 @app.route('/user/<name>') 
